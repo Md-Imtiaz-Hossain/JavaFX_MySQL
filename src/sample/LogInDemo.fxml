@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.LogInDemoController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="800.0" minWidth="800.0" prefWidth="800.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints maxHeight="800.0" minHeight="800.0" prefHeight="800.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <BorderPane prefHeight="200.0" prefWidth="200.0">
+         <center>
+            <AnchorPane maxHeight="500.0" maxWidth="350.0" minHeight="500.0" minWidth="350.0" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #a6e3b6;" styleClass="style.css" BorderPane.alignment="CENTER">
+               <children>
+                  <Label alignment="CENTER" layoutX="132.0" layoutY="28.0" prefHeight="62.0" prefWidth="174.0" text="ABCD BANK" textFill="#151f85">
+                     <font>
+                        <Font name="ArnoPro-Bold" size="30.0" />
+                     </font>
+                  </Label>
+                   
+                  <ImageView fitHeight="76.0" fitWidth="87.0" layoutX="45.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../image/login.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="89.0" layoutY="97.0" prefHeight="24.0" prefWidth="189.0" text="Internet Banking" textFill="#8d8585">
+                     <font>
+                        <Font name="Georgia Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="59.0" layoutY="167.0" text="User Id">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="59.0" layoutY="234.0" text="Password">
+                     <font>
+                        <Font name="System Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField layoutX="58.0" layoutY="199.0" prefHeight="20.0" prefWidth="250.0" promptText="UsarName" />
+                  <Button fx:id="signIn" layoutX="57.0" layoutY="329.0" mnemonicParsing="false" onAction="#signInOnAction" prefHeight="20.0" prefWidth="250.0" text="Log In">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="41.0" layoutY="419.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="98.0" style="-fx-background-color: #a6e3b6;" text="Security Tips" underline="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button alignment="CENTER" layoutX="81.0" layoutY="390.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="206.0" style="-fx-background-color: #a6e3b6;" text="Forgot Password/ ID locked?" underline="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="signUp" alignment="CENTER" layoutX="139.0" layoutY="419.0" mnemonicParsing="false" onAction="#signUpOnAction" prefHeight="29.0" prefWidth="196.0" style="-fx-background-color: #a6e3b6;" text="Sign up for Internet Banking" underline="true">
+                     <font>
+                        <Font name="System Bold" size="13.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <PasswordField layoutX="58.0" layoutY="266.0" prefHeight="20.0" prefWidth="250.0" promptText="Password" />
+               </children>
+            </AnchorPane>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="55.0" prefWidth="800.0" style="-fx-background-color: #18181a;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label layoutX="13.0" layoutY="12.0" prefHeight="17.0" prefWidth="275.0" text="16222|+8802556680123                              " textFill="#e8e4e4" />
+                  <Label layoutX="13.0" layoutY="31.0" prefHeight="17.0" prefWidth="775.0" text="SWIFT:BRAKBDDH ©COPYRIGHT 2018 ABC Bank Limited                                                                                             FAQ   Terms and Conditions  " textFill="#e8e4e4" />
+                  <Button fx:id="signUpForBankAccount" layoutX="583.0" layoutY="4.0" mnemonicParsing="false" onAction="#signUpForBankAccountOnAction" prefHeight="6.0" prefWidth="198.0" style="-fx-background-color: #18181a;" text="Create  Bank Account" textFill="#f2ecec" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children></AnchorPane>
+         </bottom>
+      </BorderPane>
+   </children>
+</GridPane>
