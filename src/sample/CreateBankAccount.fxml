@@ -1,14 +1,133 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.CreateBankAccountController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="900.0" prefWidth="550.0" snapToPixel="false" style="-fx-background-color: gray;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <BorderPane layoutY="113.0" prefHeight="797.0" prefWidth="550.0" style="-fx-background-color: #a6e3b6;">
+         <effect>
+            <Blend />
+         </effect>
+         <top>
+            <Label text="Create An Account" underline="true" BorderPane.alignment="CENTER">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+            </Label>
+         </top>
+         <center>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets top="10.0" />
+               </BorderPane.margin>
+               <children>
+                  <Label layoutX="75.0" layoutY="113.0" prefHeight="40.0" prefWidth="200.0" text="Last Name">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="73.0" prefHeight="40.0" prefWidth="200.0" text="First Name">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="153.0" prefHeight="40.0" prefWidth="200.0" text="Email">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="313.0" prefHeight="40.0" prefWidth="200.0" text="Country">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="273.0" prefHeight="40.0" prefWidth="200.0" text="Branch">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="233.0" prefHeight="40.0" prefWidth="200.0" text="Bank Account Number">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="193.0" prefHeight="40.0" prefWidth="200.0" text="Phone">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="355.0" prefHeight="40.0" prefWidth="200.0" text="Birth Date">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="475.0" prefHeight="40.0" prefWidth="200.0" text="---">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="435.0" prefHeight="40.0" prefWidth="200.0" text="Gender">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="395.0" prefHeight="40.0" prefWidth="200.0" text="Initial Amount">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="75.0" layoutY="33.0" prefHeight="40.0" prefWidth="200.0" text="Account Type">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="447.0" layoutY="694.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Save">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+                  <Button layoutX="359.0" layoutY="694.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Cancel">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                  </Button>
+               </children>
+            </AnchorPane>
+         </center>
+      </BorderPane>
+      <Label layoutX="195.0" layoutY="14.0" text="ABC BANK" textAlignment="CENTER">
+         <font>
+            <Font name="ArnoPro-SmbdItalicSmText" size="58.0" />
+         </font>
+         <effect>
+            <DropShadow color="#1ab019" height="41.76" radius="9.94" width="0.0" />
+         </effect>
+         <textFill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.9714285714285714">
+               <stops>
+                  <Stop color="#9203f2" />
+                  <Stop color="WHITE" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </textFill>
+      </Label>
+      <ImageView fitHeight="80.0" fitWidth="111.0" layoutX="80.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../image/3rd.jpg" />
+         </image></ImageView>
+   </children>
 </AnchorPane>
