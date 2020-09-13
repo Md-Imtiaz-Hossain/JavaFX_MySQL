@@ -1,11 +1,17 @@
 package sample;
 
+import javafx.animation.Animation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import org.controlsfx.control.Notifications;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -56,6 +62,22 @@ public class  CreateBankAccountController implements Initializable {
 
 
     public void saveButtonOnAction(ActionEvent event) {
+
+        TrayNotification t = new TrayNotification();
+        AnimationType a = AnimationType.FADE;
+        //AnimationType a = AnimationType.POPUP;
+        //AnimationType a = AnimationType.SLIDE;
+
+        t.setAnimationType(a);
+        t.setTitle("Action Notification");
+        t.setMessage("Account Successfully Created !!!");
+        t.setNotificationType(NotificationType.SUCCESS);
+        //t.setNotificationType(NotificationType.ERROR);
+        //t.setNotificationType(NotificationType.NOTICE);
+        //t.setNotificationType(NotificationType.WARNING);
+        t.showAndDismiss(Duration.millis(5000));
+
+
         String s =(String) accountTypeChoiceBox.getValue();
         System.out.println("Account Type- "+ s);
 
