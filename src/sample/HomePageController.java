@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 import javax.swing.text.html.ImageView;
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -62,6 +63,12 @@ public class HomePageController  {
     }
 
     public void signUpForBankAccountOnAction(ActionEvent event) {
+
+
+
+
+
+
         try{
             Parent root = FXMLLoader.load(getClass().getResource("CreateBankAccount.fxml"));
             Stage primaryStage = new Stage();
@@ -79,6 +86,7 @@ public class HomePageController  {
 
 
     public void signUpOnAction(javafx.event.ActionEvent event) {
+
         try{
             Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
             Stage primaryStage = new Stage();

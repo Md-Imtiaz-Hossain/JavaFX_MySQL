@@ -11,8 +11,8 @@ public class CreateMySQLConnection {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/login_page","root", "600660");
-            System.out.println("Success !!!");
+                    "jdbc:mysql://localhost:3306/abcd_bank","root", "600660");
+            System.out.println("Successfully connected with abcd_bank !!!");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
