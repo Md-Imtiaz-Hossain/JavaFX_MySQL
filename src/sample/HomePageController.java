@@ -64,11 +64,6 @@ public class HomePageController  {
 
     public void signUpForBankAccountOnAction(ActionEvent event) {
 
-
-
-
-
-
         try{
             Parent root = FXMLLoader.load(getClass().getResource("CreateBankAccount.fxml"));
             Stage primaryStage = new Stage();
@@ -91,9 +86,10 @@ public class HomePageController  {
             Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("SignUp");
-            Scene scene = new Scene(root, 700, 900); //"/image/login.png"
+            Scene scene = new Scene(root, 355, 392); //"/image/login.png"
             scene.getStylesheets().add("/Style/style.css");
             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+            primaryStage.resizableProperty().setValue(false); // Disable Mazimuise Button
             primaryStage.setScene(scene);
             primaryStage.show();
         }catch (IOException e){
