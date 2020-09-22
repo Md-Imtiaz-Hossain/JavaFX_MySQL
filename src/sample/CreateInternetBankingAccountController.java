@@ -50,7 +50,7 @@ public class CreateInternetBankingAccountController {
                                                 Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                                                 Stage primaryStage = new Stage();
                                                 primaryStage.setTitle("Upload Photo And Signature..");
-                                                Scene scene = new Scene(root, 300, 300); //"/image/login.png"
+                                                Scene scene = new Scene(root, 550, 550); //"/image/login.png"
                                                 scene.getStylesheets().add("/Style/style.css");
                                                 primaryStage.resizableProperty().setValue(false);
                                                 primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
