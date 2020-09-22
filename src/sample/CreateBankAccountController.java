@@ -91,6 +91,9 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
 
                                 }else {
                                     System.out.println("Try A Different AccountNumber or Email or Phone or NidPassportNo");
+                                    TrayNotification t = new TrayNotification();
+                                    //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
+                                    AnimationType a = AnimationType.POPUP;
                                     t.setAnimationType(a);
                                     t.setTitle("Error !!!");
                                     t.setMessage("Try Another AccountNumber or Email or Phone or NidPassportNo....");

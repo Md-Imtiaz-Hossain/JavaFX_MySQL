@@ -76,7 +76,7 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button alignment="CENTER" layoutX="81.0" layoutY="390.0" mnemonicParsing="false" prefHeight="29.0" prefWidth="206.0" style="-fx-background-color: #a6e3b6;" text="Forgot Password/ ID locked?" underline="true">
+                  <Button fx:id="forgotPassword" alignment="CENTER" layoutX="81.0" layoutY="390.0" mnemonicParsing="false" onAction="#forgotPasswordOnAction" prefHeight="29.0" prefWidth="206.0" style="-fx-background-color: #a6e3b6;" text="Forgot Password/ ID locked?" underline="true">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

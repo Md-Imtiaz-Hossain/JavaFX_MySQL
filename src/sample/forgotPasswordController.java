@@ -16,7 +16,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-public class SignUpController  {
+public class forgotPasswordController {
 
     CreateMySQLConnection createConnectionDemo = new CreateMySQLConnection();
 
@@ -54,9 +54,9 @@ public class SignUpController  {
 
 
     public void cancelButtonOnAction(ActionEvent event){
-         //get a handle to the stage
+        //get a handle to the stage
         Stage stage = (Stage) cancelButton.getScene().getWindow();
-         //do what you have to do
+        //do what you have to do
         stage.close();
     }
 
@@ -87,33 +87,33 @@ public class SignUpController  {
                     warning2.setText("Enter Account Phone");
                     System.out.println("Please Enter Account Phone");
                 } else {
-                            if (resultSet.getInt(1) == 1){
+                    if (resultSet.getInt(1) == 1){
 
-                                        try{
-                                            Parent root = FXMLLoader.load(getClass().getResource("CreateInternetBankingAccount.fxml"));
-                                            Stage primaryStage = new Stage();
-                                            primaryStage.setTitle("Create A Bank Account");
-                                            Scene scene = new Scene(root, 338, 463); //"/image/login.png"
-                                            scene.getStylesheets().add("/Style/CreateBankAccount.css");
-                                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-                                            primaryStage.resizableProperty().setValue(false); // Disable Mazimuise Button
-                                            primaryStage.setScene(scene);
+                        try{
+                            Parent root = FXMLLoader.load(getClass().getResource("updatePassword.fxml"));
+                            Stage primaryStage = new Stage();
+                            primaryStage.setTitle("Enter New Password");
+                            Scene scene = new Scene(root, 338, 463); //"/image/login.png"
+                            scene.getStylesheets().add("/Style/CreateBankAccount.css");
+                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+                            primaryStage.resizableProperty().setValue(false); // Disable Mazimuise Button
+                            primaryStage.setScene(scene);
 
-                                            primaryStage.show();
-                                        }catch (IOException e){
-                                            e.printStackTrace();
-                                        }finally {
-                                            //get a handle to the stage
-                                            Stage stage = (Stage) cancelButton.getScene().getWindow();
-                                            //do what you have to do
-                                            stage.close();
-                                        }
-                            }else {
-                                warning2.setText("");
-                                warning1.setText("");
-                                warning.setText("Invalid!Need An Account? Please-->");
-                                System.out.println("Invalid UserName or Password!!!");
-                            }
+                            primaryStage.show();
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }finally {
+                            //get a handle to the stage
+                            Stage stage = (Stage) cancelButton.getScene().getWindow();
+                            //do what you have to do
+                            stage.close();
+                        }
+                    }else {
+                        warning2.setText("");
+                        warning1.setText("");
+                        warning.setText("Invalid!Need An Account? Please-->");
+                        System.out.println("Invalid UserName or Password!!!");
+                    }
                 }
             }
             statement.close();
@@ -123,7 +123,4 @@ public class SignUpController  {
         }
 
     }
-
-
-
 }

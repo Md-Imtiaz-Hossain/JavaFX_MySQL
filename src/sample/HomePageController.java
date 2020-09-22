@@ -8,6 +8,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -19,7 +24,7 @@ public class HomePageController  {
     Statement statement;
 
     @FXML
-    private Button signIn,signUpForBankAccount,signUp,showPasswordButton;
+    private Button signIn,signUpForBankAccount,signUp,showPasswordButton,forgotPassword;
 
     @FXML
     private PasswordField passwordField;
@@ -78,6 +83,16 @@ public class HomePageController  {
 
                             usernameTextField.setText("");passwordField.setText("");
 
+                            TrayNotification t = new TrayNotification();
+                            //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
+                            AnimationType a = AnimationType.POPUP;
+                            t.setAnimationType(a);
+                            t.setTitle("Success !!!");
+                            t.setMessage("Successfully Loged In. ");
+                            //t.setNotificationType(NotificationType.ERROR);//t.setNotificationType(NotificationType.NOTICE);  //t.setNotificationType(NotificationType.WARNING);
+                            t.setNotificationType(NotificationType.SUCCESS);
+                            t.showAndDismiss(Duration.millis(4000));
+
 
                         }else {
                             l1.setText("");
@@ -132,4 +147,20 @@ public class HomePageController  {
         }
     }
 
+    public void forgotPasswordOnAction(ActionEvent event) {
+
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Recover Account");
+            Scene scene = new Scene(root, 355, 392); //"/image/login.png"
+            scene.getStylesheets().add("/Style/style.css");
+            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+            primaryStage.resizableProperty().setValue(false); // Disable Mazimuise Button
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
 }
