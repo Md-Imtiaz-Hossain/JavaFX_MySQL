@@ -25,14 +25,6 @@ public class  CreateBankAccountController implements Initializable {
     CreateMySQLConnection createConnectionDemo = new CreateMySQLConnection();
     Statement statement;
 
-
-    TrayNotification t = new TrayNotification();
-    //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
-    AnimationType a = AnimationType.POPUP;
-
-
-
-
     @FXML
     private ChoiceBox<String> accountTypeChoiceBox,countryChoiceBox,branchChoiceBox,genderChoiceBox;
     @FXML
@@ -46,8 +38,6 @@ public class  CreateBankAccountController implements Initializable {
 
     @FXML
     private DatePicker birthDate;
-
-
 
 
 public void saveButtonOnAction(ActionEvent event) throws SQLException {
@@ -67,7 +57,9 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
                                     Stage stage = (Stage) saveButton.getScene().getWindow();
                                     stage.close();
 
-
+                                    TrayNotification t = new TrayNotification();
+                                    //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
+                                    AnimationType a = AnimationType.POPUP;
                                     t.setAnimationType(a);
                                     t.setTitle("Success !!!");
                                     t.setMessage("Registration Success.");
@@ -75,19 +67,20 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
                                     t.setNotificationType(NotificationType.SUCCESS);
                                     t.showAndDismiss(Duration.millis(4000));
 
-                                        try{
-                                            Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
-                                            Stage primaryStage = new Stage();
-                                            primaryStage.setTitle("Upload Photo And Signature..");
-                                            Scene scene = new Scene(root, 422, 601); //"/image/login.png"
-                                            scene.getStylesheets().add("/Style/style.css");
-                                            primaryStage.resizableProperty().setValue(false);
-                                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-                                            primaryStage.setScene(scene);
-                                            primaryStage.show();
-                                        }catch (IOException e){
-                                            e.printStackTrace();
-                                        }
+
+                                    try{
+                                        Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
+                                        Stage primaryStage = new Stage();
+                                        primaryStage.setTitle("Upload Photo And Signature..");
+                                        Scene scene = new Scene(root, 600, 601); //"/image/login.png"
+                                        scene.getStylesheets().add("/Style/style.css");
+                                        primaryStage.resizableProperty().setValue(false);
+                                        primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+                                        primaryStage.setScene(scene);
+                                        primaryStage.show();
+                                    }catch (IOException e){
+                                        e.printStackTrace();
+                                    }
 
                                 }else {
                                     System.out.println("Try A Different AccountNumber or Email or Phone or NidPassportNo");
@@ -103,6 +96,9 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
                                 }
                 }else {
                     System.out.println("Account Number Must be 16 Digit");
+                    TrayNotification t = new TrayNotification();
+                    //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
+                    AnimationType a = AnimationType.POPUP;
                     t.setAnimationType(a);
                     t.setTitle("Error !!!");
                     t.setMessage("Error with account Number.Must be 16 Digit...");
@@ -113,7 +109,9 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
 
 
     }else {
-
+        TrayNotification t = new TrayNotification();
+        //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
+        AnimationType a = AnimationType.POPUP;
         t.setAnimationType(a);
         t.setTitle("Error !!!");
         t.setMessage("Please Fill up All Fields.");
@@ -127,22 +125,18 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
 // SELECT DATE_FORMAT('2007-10-04', '%d  %m  %Y'); -- Ans= 04 10 2007
 
     public boolean accountNumberValidation() throws SQLException {
-//
-//            Connection connection = createConnectionDemo.createConnection();
-//            statement = connection.createStatement();
-//            ResultSet resultSet = statement.executeQuery("SELECT count(1) FROM abcd_bank.users where accountNumber = '"+ accountNumber.getText() +"'  ;");
 
-        if (accountNumber.getText().length() == 16){
+    if (accountNumber.getText().length() == 16){
                 return true;
         }else {
             return false;
         }
-}
+    }
 
 
 
     public boolean emailValidation(String email) {
-    if (email.length() == 10) {
+        if (email.length() == 10) {
             return true;}
         else
             return false;

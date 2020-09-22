@@ -20,9 +20,6 @@ public class Main extends Application {
         // primaryStage.initStyle(StageStyle.UTILITY); // Disable Mazimuise & Minimice Button
         primaryStage.show();
         primaryStage.setOnCloseRequest(e -> Platform.exit());
-
-
-
     }
 
 
