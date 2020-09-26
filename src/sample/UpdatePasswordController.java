@@ -46,7 +46,7 @@ public class UpdatePasswordController {
                         Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                         Stage primaryStage = new Stage();
                         primaryStage.setTitle("Upload Photo And Signature..");
-                        Scene scene = new Scene(root, 400, 400); //"/image/login.png"
+                        Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                         scene.getStylesheets().add("/Style/style.css");
                         primaryStage.resizableProperty().setValue(false);
                         primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window

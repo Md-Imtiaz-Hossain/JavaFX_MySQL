@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -28,6 +29,9 @@ import java.util.List;
 public class PhotoSignatureController {
 
     CreateMySQLConnection createConnectionDemo = new CreateMySQLConnection();
+    File file;
+    Image image;
+    String getPhotoPath,getSignPath;
 
 
     @FXML
@@ -37,7 +41,10 @@ public class PhotoSignatureController {
     private Button cancel,submit;
 
     @FXML
-    private Label photoPath,signPAth;
+    private Label photoPath,signPAth,warning;
+
+    @FXML
+    private ImageView imageView,signView;
 
 
 
@@ -47,14 +54,21 @@ public class PhotoSignatureController {
         Connection connection = createConnectionDemo.createConnection();
 
 
-        if (!accountNumber.getText().isEmpty()){
+        if (!accountNumber.getText().isEmpty() && accountNumber.getText().length() == 16 &&
+                !getPhotoPath.isEmpty() && !getSignPath.isEmpty()){
 
-                if (isExiecute()){
+                if (isExecute()){
+
+                    Stage stage = (Stage) submit.getScene().getWindow();
+                    //do what you have to do
+                    stage.close();
+
+
                     try{
                         Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                         Stage primaryStage = new Stage();
                         primaryStage.setTitle("Upload Photo And Signature..");
-                        Scene scene = new Scene(root, 550, 550); //"/image/login.png"
+                        Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                         scene.getStylesheets().add("/Style/style.css");
                         primaryStage.resizableProperty().setValue(false);
                         primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
@@ -62,16 +76,9 @@ public class PhotoSignatureController {
                         primaryStage.show();
                         System.out.println("Registration  Success...");
 
-
-
-                        //get a handle to the stage
-                        Stage stage = (Stage) submit.getScene().getWindow();
-                        //do what you have to do
-                        stage.close();
                     }catch (Exception e){
                         e.printStackTrace();
                     }finally {
-                        System.out.println("Try A Different AccountNumber or Email or Phone or NidPassportNo");
                         TrayNotification t = new TrayNotification();
                         //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
                         AnimationType a = AnimationType.POPUP;
@@ -82,20 +89,17 @@ public class PhotoSignatureController {
                         t.setNotificationType(NotificationType.SUCCESS);
                         t.showAndDismiss(Duration.millis(4000));
 
-                        //get a handle to the stage
-                        Stage stage = (Stage) submit.getScene().getWindow();
-                        //do what you have to do
-                        stage.close();
 
-                        connection.close();
                     }
 
                 }else {
+                    warning.setText("Invalid Account Number. Try Again.");
                     System.out.println("Invalid Account Number...");
                 }
 
         }else{
-            System.out.println("Enter Your Account Number");
+            warning.setText("Enter Your 16 Digit Account Number & SElect Photo and Sign");
+            System.out.println("Enter Your 16 Digit Account Number");
         }
 
 
@@ -112,12 +116,12 @@ public class PhotoSignatureController {
 
 
 
-    public boolean isExiecute(){
+    public boolean isExecute(){
         Connection connection = createConnectionDemo.createConnection();
         try{
             Statement statement;
             statement = connection.createStatement();
-            statement.execute("update abcd_bank.users set image = '"+signPAth.getText()+"' , sign = '"+photoPath.getText()+"' where Account_Number = '"+accountNumber.getText()+"' ;  ");
+            statement.execute("update abcd_bank.users set image = '"+getPhotoPath+"' , sign = '"+getSignPath+"' where Account_Number = '"+accountNumber.getText()+"' ;  ");
             return true;
         }catch (Exception e){
             e.printStackTrace();
@@ -127,27 +131,40 @@ public class PhotoSignatureController {
 
     public void photoSelectOnAction(ActionEvent event) {
 
-        FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File", "*.jpg"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All File", "*.*"));
-        List<File> f = fc.showOpenMultipleDialog(null);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                (new FileChooser.ExtensionFilter("Jpg File", "*.jpg")),
+                (new FileChooser.ExtensionFilter("Png File", "*.png")),
+                (new FileChooser.ExtensionFilter("Gif File", "*.gif")) );
 
-        for (File file : f){
-            photoPath.setText(String.valueOf(f.get(0)));
-            System.out.println(file.getAbsolutePath());
+        file = fileChooser.showOpenDialog(null);
+
+        if (file != null){
+            photoPath.setText("Selected File--> " + file.getAbsolutePath());
+            image = new Image(file.toURI().toString());
+            getPhotoPath=file.getAbsolutePath();
+            System.out.println("Selected File--> " + getPhotoPath);
+            imageView.setImage(image);
         }
+
     }
 
     public void signSelectOnAction(ActionEvent event) {
 
-        FileChooser fc = new FileChooser();
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("File", "*.jpg"));
-        fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("All File", "*.*"));
-        List<File> f = fc.showOpenMultipleDialog(null);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                (new FileChooser.ExtensionFilter("Jpg File", "*.jpg")),
+                (new FileChooser.ExtensionFilter("Png File", "*.png")),
+                (new FileChooser.ExtensionFilter("Gif File", "*.gif")) );
 
-        for (File file : f){
-            signPAth.setText(String.valueOf(f.get(0)));
-            System.out.println(file.getAbsolutePath());
+        file = fileChooser.showOpenDialog(null);
+
+        if (file != null){
+            signPAth.setText("Selected File--> " + file.getAbsolutePath());
+            image = new Image(file.toURI().toString());
+            getSignPath=file.getAbsolutePath();
+            System.out.println("Selected File--> " + getSignPath);
+            signView.setImage(image);
         }
 
     }

@@ -27,6 +27,7 @@ public class  CreateBankAccountController implements Initializable {
 
     @FXML
     private ChoiceBox<String> accountTypeChoiceBox,countryChoiceBox,branchChoiceBox,genderChoiceBox;
+
     @FXML
     private TextField firstName,lastName,email,phone,accountNumber,initialAmount,nidPassportNo;
 
@@ -38,6 +39,9 @@ public class  CreateBankAccountController implements Initializable {
 
     @FXML
     private DatePicker birthDate;
+
+    @FXML
+    private Label warning;
 
 
 public void saveButtonOnAction(ActionEvent event) throws SQLException {
@@ -83,6 +87,7 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
                                     }
 
                                 }else {
+                                    warning.setText("Try A Different AccountNumber or Email or Phone or NidPassportNo");
                                     System.out.println("Try A Different AccountNumber or Email or Phone or NidPassportNo");
                                     TrayNotification t = new TrayNotification();
                                     //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
@@ -96,6 +101,8 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
                                 }
                 }else {
                     System.out.println("Account Number Must be 16 Digit");
+                    warning.setText("Account Number Must be 16 Digit");
+
                     TrayNotification t = new TrayNotification();
                     //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
                     AnimationType a = AnimationType.POPUP;
@@ -109,6 +116,7 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
 
 
     }else {
+        warning.setText("Please Fill up All Fields.");
         TrayNotification t = new TrayNotification();
         //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
         AnimationType a = AnimationType.POPUP;

@@ -75,7 +75,7 @@ public class HomePageController  {
                             Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                             Stage primaryStage = new Stage();
                             primaryStage.setTitle("SignIn");
-                            Scene scene = new Scene(root, 400, 400); //"/image/login.png"
+                            Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                             scene.getStylesheets().add("/Style/style.css");
                             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
                             primaryStage.setScene(scene);
@@ -93,6 +93,10 @@ public class HomePageController  {
                             t.setNotificationType(NotificationType.SUCCESS);
                             t.showAndDismiss(Duration.millis(4000));
 
+                            l1.setText("");
+                            l2.setText("");
+                            l3.setText("");
+                            showPass.setText("");
 
                         }else {
                             l1.setText("");
@@ -126,6 +130,11 @@ public class HomePageController  {
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            l1.setText("");
+            l2.setText("");
+            l3.setText("");
+            showPass.setText("");
         }
     }
 
@@ -144,6 +153,11 @@ public class HomePageController  {
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            l1.setText("");
+            l2.setText("");
+            l3.setText("");
+            showPass.setText("");
         }
     }
 
@@ -151,20 +165,20 @@ public class HomePageController  {
 
 
 
-
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Upload Photo And Signature..");
-            Scene scene = new Scene(root, 600, 601); //"/image/login.png"
-            scene.getStylesheets().add("/Style/style.css");
-            primaryStage.resizableProperty().setValue(false);
-            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
+//
+//        try{
+//            Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
+//            Stage primaryStage = new Stage();
+//            primaryStage.setTitle("Upload Photo And Signature..");
+//            Scene scene = new Scene(root, 600, 601); //"/image/login.png"
+//            scene.getStylesheets().add("/Style/style.css");
+//            primaryStage.resizableProperty().setValue(false);
+//            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+//            primaryStage.setScene(scene);
+//            primaryStage.show();
+//        }catch (IOException e){
+//            e.printStackTrace();
+//        }
 
         try{
             Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
@@ -178,6 +192,11 @@ public class HomePageController  {
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
+        }finally {
+            l1.setText("");
+            l2.setText("");
+            l3.setText("");
+            showPass.setText("");
         }
     }
 }

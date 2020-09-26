@@ -180,6 +180,11 @@
                      <cursor>
                         <Cursor fx:constant="TEXT" />
                      </cursor></DatePicker>
+                  <Label fx:id="warning" alignment="CENTER" layoutY="-5.0" prefHeight="27.0" prefWidth="550.0" textAlignment="CENTER" textFill="#e80606" underline="true">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Label>
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
