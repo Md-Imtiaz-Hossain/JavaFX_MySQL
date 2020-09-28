@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -198,5 +199,12 @@ public class HomePageController  {
             l3.setText("");
             showPass.setText("");
         }
+    }
+
+    public void refreshImage(MouseEvent mouseEvent) {
+        l1.setText("");
+        l2.setText("");
+        l3.setText("");
+        showPass.setText("");
     }
 }
