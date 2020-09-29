@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -76,6 +77,8 @@ public class HomePageController  {
                             Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                             Stage primaryStage = new Stage();
                             primaryStage.setTitle("SignIn");
+                            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+
                             Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                             scene.getStylesheets().add("/Style/style.css");
                             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
@@ -123,6 +126,8 @@ public class HomePageController  {
             Parent root = FXMLLoader.load(getClass().getResource("CreateBankAccount.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Create A Bank Account");
+            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+
             Scene scene = new Scene(root, 550, 900); //"/image/login.png"
             scene.getStylesheets().add("/Style/CreateBankAccount.css");
             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
@@ -146,6 +151,8 @@ public class HomePageController  {
             Parent root = FXMLLoader.load(getClass().getResource("SignUp.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("SignUp");
+            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+
             Scene scene = new Scene(root, 355, 392); //"/image/login.png"
             scene.getStylesheets().add("/Style/style.css");
             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
@@ -185,6 +192,8 @@ public class HomePageController  {
             Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Recover Account");
+            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+
             Scene scene = new Scene(root, 355, 392); //"/image/login.png"
             scene.getStylesheets().add("/Style/style.css");
             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
