@@ -8,6 +8,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -38,10 +39,13 @@ public class PhotoSignatureController {
     private TextField accountNumber;
 
     @FXML
-    private Button cancel,submit;
+    private TextArea signTextArea,photoTextArea;
 
     @FXML
-    private Label photoPath,signPAth,warning;
+    private Button cancelButton,submit;
+
+    @FXML
+    private Label warning,warning1,warning2;
 
     @FXML
     private ImageView imageView,signView;
@@ -53,21 +57,31 @@ public class PhotoSignatureController {
 
         Connection connection = createConnectionDemo.createConnection();
 
-
-        if (!accountNumber.getText().isEmpty() && accountNumber.getText().length() == 16 &&
-                !getPhotoPath.isEmpty() && !getSignPath.isEmpty()){
+       if (accountNumber.getText().isEmpty()  && photoTextArea.getText().isEmpty() && signTextArea.getText().isEmpty()){
+           warning.setText("Enter Your 16 Digit Account Number");
+           warning1.setText("Select A Photo !!!");
+           warning2.setText("Select A Signature !!!");
+       }else if(accountNumber.getText().isEmpty() || accountNumber.getText().length() != 16){
+           warning.setText("Enter Your 16 Digit Account Number");
+           warning1.setText("");
+           warning2.setText("");
+       }else if(photoTextArea.getText().isEmpty()){
+           warning.setText("");
+           warning1.setText("Select A Photo !!!");
+           warning2.setText("");
+       }else if(signTextArea.getText().isEmpty()){
+           warning.setText("");
+           warning1.setText("");
+           warning2.setText("Select A Signature !!!");
+       }else if (!accountNumber.getText().isEmpty() && accountNumber.getText().length() == 16 && !photoTextArea.getText().isEmpty() && !signTextArea.getText().isEmpty()){
 
                 if (isExecute()){
-
-                    Stage stage = (Stage) submit.getScene().getWindow();
-                    //do what you have to do
-                    stage.close();
-
 
                     try{
                         Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                         Stage primaryStage = new Stage();
                         primaryStage.setTitle("Upload Photo And Signature..");
+                        primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
                         Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                         scene.getStylesheets().add("/Style/style.css");
                         primaryStage.resizableProperty().setValue(false);
@@ -75,6 +89,9 @@ public class PhotoSignatureController {
                         primaryStage.setScene(scene);
                         primaryStage.show();
                         System.out.println("Registration  Success...");
+
+                        Stage stage = (Stage) submit.getScene().getWindow();
+                        stage.close();
 
                     }catch (Exception e){
                         e.printStackTrace();
@@ -88,29 +105,23 @@ public class PhotoSignatureController {
                         //t.setNotificationType(NotificationType.ERROR);//t.setNotificationType(NotificationType.NOTICE);  //t.setNotificationType(NotificationType.WARNING);
                         t.setNotificationType(NotificationType.SUCCESS);
                         t.showAndDismiss(Duration.millis(4000));
-
-
                     }
-
                 }else {
                     warning.setText("Invalid Account Number. Try Again.");
                     System.out.println("Invalid Account Number...");
                 }
-
-        }else{
-            warning.setText("Enter Your 16 Digit Account Number & SElect Photo and Sign");
+       }else{
+            warning.setText("Enter Your 16 Digit Account Number");
+            warning1.setText("Select A Photo !!!");
+            warning2.setText("Select A Signature !!!");
             System.out.println("Enter Your 16 Digit Account Number");
-        }
-
-
+       }
     }
 
 
 
     public void cancelButtonOnAction(ActionEvent event) {
-        //get a handle to the stage
-        Stage stage = (Stage) cancel.getScene().getWindow();
-        //do what you have to do
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
         stage.close();
     }
 
@@ -129,8 +140,9 @@ public class PhotoSignatureController {
         }
     }
 
-    public void photoSelectOnAction(ActionEvent event) {
+    public void photoSelectOnAction(ActionEvent event) throws IOException {
 
+        warning1.setText("");
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
                 (new FileChooser.ExtensionFilter("Jpg File", "*.jpg")),
@@ -140,16 +152,17 @@ public class PhotoSignatureController {
         file = fileChooser.showOpenDialog(null);
 
         if (file != null){
-            photoPath.setText("Selected File--> " + file.getAbsolutePath());
             image = new Image(file.toURI().toString());
-            getPhotoPath=file.getAbsolutePath();
-            System.out.println("Selected File--> " + getPhotoPath);
             imageView.setImage(image);
+            System.out.println("Selected File--> " + photoTextArea.getText());
+            photoTextArea.appendText("" + file.getName());
+            getPhotoPath=file.getAbsolutePath();
         }
 
     }
 
     public void signSelectOnAction(ActionEvent event) {
+        warning2.setText("");
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().addAll(
@@ -160,12 +173,12 @@ public class PhotoSignatureController {
         file = fileChooser.showOpenDialog(null);
 
         if (file != null){
-            signPAth.setText("Selected File--> " + file.getAbsolutePath());
             image = new Image(file.toURI().toString());
-            getSignPath=file.getAbsolutePath();
-            System.out.println("Selected File--> " + getSignPath);
+            System.out.println("Selected File--> " + signTextArea.getText());
             signView.setImage(image);
-        }
+            signTextArea.appendText("" + file.getName());
+            getSignPath=file.getAbsolutePath();
 
+        }
     }
 }

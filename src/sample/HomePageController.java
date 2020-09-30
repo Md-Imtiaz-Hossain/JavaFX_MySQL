@@ -173,20 +173,20 @@ public class HomePageController  {
 
 
 
-//
-//        try{
-//            Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
-//            Stage primaryStage = new Stage();
-//            primaryStage.setTitle("Upload Photo And Signature..");
-//            Scene scene = new Scene(root, 600, 601); //"/image/login.png"
-//            scene.getStylesheets().add("/Style/style.css");
-//            primaryStage.resizableProperty().setValue(false);
-//            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-//            primaryStage.setScene(scene);
-//            primaryStage.show();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
+
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
+            Stage primaryStage = new Stage();
+            primaryStage.setTitle("Upload Photo And Signature..");
+            Scene scene = new Scene(root, 600, 601); //"/image/login.png"
+            scene.getStylesheets().add("/Style/style.css");
+            primaryStage.resizableProperty().setValue(false);
+            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
 
         try{
             Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));

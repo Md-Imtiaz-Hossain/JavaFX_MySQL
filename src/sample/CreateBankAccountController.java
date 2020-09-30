@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -76,6 +77,7 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
                                         Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
                                         Stage primaryStage = new Stage();
                                         primaryStage.setTitle("Upload Photo And Signature..");
+                                        primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
                                         Scene scene = new Scene(root, 600, 601); //"/image/login.png"
                                         scene.getStylesheets().add("/Style/style.css");
                                         primaryStage.resizableProperty().setValue(false);
