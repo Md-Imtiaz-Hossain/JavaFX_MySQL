@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -46,6 +47,7 @@ public class UpdatePasswordController {
                         Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                         Stage primaryStage = new Stage();
                         primaryStage.setTitle("Upload Photo And Signature..");
+                        primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
                         Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                         scene.getStylesheets().add("/Style/style.css");
                         primaryStage.resizableProperty().setValue(false);

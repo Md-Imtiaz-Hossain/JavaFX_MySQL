@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -93,6 +94,7 @@ public class forgotPasswordController {
                             Parent root = FXMLLoader.load(getClass().getResource("updatePassword.fxml"));
                             Stage primaryStage = new Stage();
                             primaryStage.setTitle("Enter New Password");
+                            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
                             Scene scene = new Scene(root, 338, 392); //"/image/login.png"
                             scene.getStylesheets().add("/Style/CreateBankAccount.css");
                             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window

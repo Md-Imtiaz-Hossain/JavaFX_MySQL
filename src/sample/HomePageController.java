@@ -171,29 +171,11 @@ public class HomePageController  {
 
     public void forgotPasswordOnAction(ActionEvent event) {
 
-
-
-
-        try{
-            Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
-            Stage primaryStage = new Stage();
-            primaryStage.setTitle("Upload Photo And Signature..");
-            Scene scene = new Scene(root, 600, 601); //"/image/login.png"
-            scene.getStylesheets().add("/Style/style.css");
-            primaryStage.resizableProperty().setValue(false);
-            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-            primaryStage.setScene(scene);
-            primaryStage.show();
-        }catch (IOException e){
-            e.printStackTrace();
-        }
-
         try{
             Parent root = FXMLLoader.load(getClass().getResource("forgotPassword.fxml"));
             Stage primaryStage = new Stage();
             primaryStage.setTitle("Recover Account");
             primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
-
             Scene scene = new Scene(root, 355, 392); //"/image/login.png"
             scene.getStylesheets().add("/Style/style.css");
             primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
