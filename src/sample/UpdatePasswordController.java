@@ -11,6 +11,10 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+import tray.animations.AnimationType;
+import tray.notification.NotificationType;
+import tray.notification.TrayNotification;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -29,6 +33,12 @@ public class UpdatePasswordController {
 
     @FXML
     private Label warning;
+
+
+
+    public void setAccountNumberTextField(String numberTextField){
+        this.accountNumber.setText(numberTextField);
+    }
 
 
 
@@ -55,6 +65,9 @@ public class UpdatePasswordController {
                         primaryStage.setScene(scene);
                         primaryStage.show();
                         System.out.println("Registration  Success...");
+
+                        TrayNotification t = new TrayNotification();AnimationType a = AnimationType.POPUP;t.setAnimationType(a);t.setTitle("Success !!!");t.setMessage("Password Update Successful.");t.setNotificationType(NotificationType.SUCCESS);t.showAndDismiss(Duration.millis(4000));
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }finally {
