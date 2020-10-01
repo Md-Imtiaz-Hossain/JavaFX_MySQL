@@ -25,14 +25,11 @@ public class UpdatePasswordController {
     CreateMySQLConnection createConnectionDemo = new CreateMySQLConnection();
 
 
-    @FXML
-    private TextField accountNumber,password, confirmPassword;
+    @FXML private TextField accountNumber,password, confirmPassword;
 
-    @FXML
-    private Button cancel,submit;
+    @FXML private Button cancel,submit;
 
-    @FXML
-    private Label warning;
+    @FXML private Label warning;
 
 
 
@@ -71,9 +68,8 @@ public class UpdatePasswordController {
                     }catch (Exception e){
                         e.printStackTrace();
                     }finally {
-                        //get a handle to the stage
+
                         Stage stage = (Stage) cancel.getScene().getWindow();
-                        //do what you have to do
                         stage.close();
 
                         accountNumber.setText("");
@@ -90,16 +86,12 @@ public class UpdatePasswordController {
         }else{
             warning.setText("Please Fill Up All Field");
         }
-
-
     }
 
 
 
     public void cancelOnAction(ActionEvent event) {
-        //get a handle to the stage
         Stage stage = (Stage) cancel.getScene().getWindow();
-        //do what you have to do
         stage.close();
     }
 
@@ -118,4 +110,6 @@ public class UpdatePasswordController {
             return false;
         }
     }
+
+
 }

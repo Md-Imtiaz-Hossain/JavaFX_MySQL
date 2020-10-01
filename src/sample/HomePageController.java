@@ -19,22 +19,21 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HomePageController  {
 
     CreateMySQLConnection createConnectionDemo = new CreateMySQLConnection();
     Statement statement;
 
-    @FXML
-    private Button signIn,signUpForBankAccount,signUp,showPasswordButton,forgotPassword;
+    @FXML private Button signIn,signUpForBankAccount,signUp,showPasswordButton,forgotPassword;
 
-    @FXML
-    private PasswordField passwordField;
-    @FXML
-    private TextField usernameTextField;
+    @FXML private PasswordField passwordField;
 
-    @FXML
-    private Label showPass,l1,l2,l3;
+    @FXML private TextField usernameTextField;
+
+    @FXML private Label showPass,l1,l2,l3;
 
 
 
@@ -74,29 +73,51 @@ public class HomePageController  {
                         if (resultSet.getInt(1) == 1){
                             System.out.println("Congratulation !! Successfully LogIn !!");
 
-                            Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
-                            Stage primaryStage = new Stage();
-                            primaryStage.setTitle("SignIn");
-                            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
 
-                            Scene scene = new Scene(root, 500, 500); //"/image/login.png"
+
+                            String accountNumber_text = usernameTextField.getText();
+
+                            FXMLLoader Loader = new FXMLLoader();
+                            Loader.setLocation(getClass().getResource("welcomeToProfile.fxml"));
+                            try {
+                                Loader.load();
+                            } catch (IOException e) {
+                                Logger.getLogger(Controller.class.getName()).log(Level.SEVERE,null,e);
+                            }finally {
+                                Stage stage = (Stage) signIn.getScene().getWindow();
+                                stage.close();
+                                TrayNotification t = new TrayNotification();AnimationType a = AnimationType.POPUP;t.setAnimationType(a);t.setTitle("Success !!!");t.setMessage("Successfully Log In. ");t.setNotificationType(NotificationType.SUCCESS);t.showAndDismiss(Duration.millis(1000));
+                            }
+
+                            WelcomeToProfileController s = Loader.getController();
+                            s.setUserNameTextField(accountNumber_text);
+
+                            Parent p = Loader.getRoot();
+                            Stage stage2 = new Stage();
+                            stage2.getIcons().add(new Image("/image/3rd.jpg"));
+                            stage2.setTitle("Welcome to Your Profile...");
+                            stage2.resizableProperty().setValue(false);
+                            stage2.initModality(Modality.APPLICATION_MODAL);
+                            Scene scene = new Scene(p);
                             scene.getStylesheets().add("/Style/style.css");
-                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-                            primaryStage.setScene(scene);
-                            primaryStage.show();
+                            stage2.setScene(scene);
+                            stage2.showAndWait();
+
+
+
+//                            Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
+//                            Stage primaryStage = new Stage();
+//                            primaryStage.setTitle("SignIn");
+//                            primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+//                            Scene scene = new Scene(root, 500, 500); //"/image/login.png"
+//                            scene.getStylesheets().add("/Style/style.css");
+//                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+//                            primaryStage.setScene(scene);
+//                            primaryStage.show();
+
+
 
                             usernameTextField.setText("");passwordField.setText("");
-
-                            TrayNotification t = new TrayNotification();
-                            //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
-                            AnimationType a = AnimationType.POPUP;
-                            t.setAnimationType(a);
-                            t.setTitle("Success !!!");
-                            t.setMessage("Successfully Loged In. ");
-                            //t.setNotificationType(NotificationType.ERROR);//t.setNotificationType(NotificationType.NOTICE);  //t.setNotificationType(NotificationType.WARNING);
-                            t.setNotificationType(NotificationType.SUCCESS);
-                            t.showAndDismiss(Duration.millis(4000));
-
                             l1.setText("");
                             l2.setText("");
                             l3.setText("");
@@ -112,8 +133,6 @@ public class HomePageController  {
             }catch (Exception e){
                 e.printStackTrace();
             }
-
-
         }
     }
 
@@ -168,6 +187,8 @@ public class HomePageController  {
             showPass.setText("");
         }
     }
+
+
 
     public void forgotPasswordOnAction(ActionEvent event) {
 

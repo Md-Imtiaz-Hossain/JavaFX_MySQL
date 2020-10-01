@@ -23,14 +23,11 @@ public class SignUpController  {
 
     CreateMySQLConnection createConnectionDemo = new CreateMySQLConnection();
 
-    @FXML
-    private Button cancelButton,nextButton;
+    @FXML private Button cancelButton,nextButton;
 
-    @FXML
-    private Label warning,warning1,warning2;
+    @FXML private Label warning,warning1,warning2;
 
-    @FXML
-    private TextField accountNumber,phone;
+    @FXML private TextField accountNumber,phone;
 
 
 
@@ -48,18 +45,14 @@ public class SignUpController  {
         }catch (IOException e){
             e.printStackTrace();
         }finally {
-            //get a handle to the stage
             Stage stage = (Stage) cancelButton.getScene().getWindow();
-            //do what you have to do
             stage.close();
         }
     }
 
 
     public void cancelButtonOnAction(ActionEvent event){
-         //get a handle to the stage
         Stage stage = (Stage) cancelButton.getScene().getWindow();
-         //do what you have to do
         stage.close();
     }
 
@@ -122,9 +115,6 @@ public class SignUpController  {
 
 
 
-
-
-
 //                                        try{
 //                                            Parent root = FXMLLoader.load(getClass().getResource("CreateInternetBankingAccount.fxml"));
 //                                            Stage primaryStage = new Stage();
@@ -157,7 +147,6 @@ public class SignUpController  {
         }catch (Exception e){
             e.printStackTrace();
         }
-
     }
 
 

@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.List;
 
 public class PhotoSignatureController {
 
@@ -35,20 +34,15 @@ public class PhotoSignatureController {
     String getPhotoPath,getSignPath;
 
 
-    @FXML
-    private TextField accountNumber;
+    @FXML private TextField accountNumber;
 
-    @FXML
-    private TextArea signTextArea,photoTextArea;
+    @FXML private TextArea signTextArea,photoTextArea;
 
-    @FXML
-    private Button cancelButton,submit;
+    @FXML private Button cancelButton,submit;
 
-    @FXML
-    private Label warning,warning1,warning2;
+    @FXML private Label warning,warning1,warning2;
 
-    @FXML
-    private ImageView imageView,signView;
+    @FXML private ImageView imageView,signView;
 
 
 
@@ -96,15 +90,9 @@ public class PhotoSignatureController {
                     }catch (Exception e){
                         e.printStackTrace();
                     }finally {
-                        TrayNotification t = new TrayNotification();
-                        //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
-                        AnimationType a = AnimationType.POPUP;
-                        t.setAnimationType(a);
-                        t.setTitle("Success !!!");
-                        t.setMessage("Successfully Upload Photo And Signature.");
+                        TrayNotification t = new TrayNotification();AnimationType a = AnimationType.POPUP;t.setAnimationType(a);t.setTitle("Success !!!");t.setMessage("Successfully Upload Photo And Signature.");t.setNotificationType(NotificationType.SUCCESS);t.showAndDismiss(Duration.millis(4000));
                         //t.setNotificationType(NotificationType.ERROR);//t.setNotificationType(NotificationType.NOTICE);  //t.setNotificationType(NotificationType.WARNING);
-                        t.setNotificationType(NotificationType.SUCCESS);
-                        t.showAndDismiss(Duration.millis(4000));
+                        //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
                     }
                 }else {
                     warning.setText("Invalid Account Number. Try Again.");
@@ -158,8 +146,8 @@ public class PhotoSignatureController {
             photoTextArea.appendText("" + file.getName());
             getPhotoPath=file.getAbsolutePath();
         }
-
     }
+
 
     public void signSelectOnAction(ActionEvent event) {
         warning2.setText("");
@@ -178,11 +166,12 @@ public class PhotoSignatureController {
             signView.setImage(image);
             signTextArea.appendText("" + file.getName());
             getSignPath=file.getAbsolutePath();
-
         }
     }
+
 
     public void setAccountNumberTextField(String accountNumber_text) {
         this.accountNumber.setText(accountNumber_text);
     }
+
 }
