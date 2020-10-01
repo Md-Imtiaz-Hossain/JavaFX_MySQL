@@ -218,5 +218,7 @@ public class HomePageController  {
         l2.setText("");
         l3.setText("");
         showPass.setText("");
+        usernameTextField.setText("");
+        passwordField.setText("");
     }
 }
