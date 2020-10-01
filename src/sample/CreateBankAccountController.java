@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class  CreateBankAccountController implements Initializable {
@@ -57,36 +59,52 @@ public void saveButtonOnAction(ActionEvent event) throws SQLException {
 
                 if (accountNumberValidation()) {
                                 if (isExecute()) {
-                                    System.out.println("Registration  Success...");
 
-                                    Stage stage = (Stage) saveButton.getScene().getWindow();
-                                    stage.close();
+                                    String accountNumber_text = accountNumber.getText();
 
-                                    TrayNotification t = new TrayNotification();
-                                    //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
-                                    AnimationType a = AnimationType.POPUP;
-                                    t.setAnimationType(a);
-                                    t.setTitle("Success !!!");
-                                    t.setMessage("Registration Success.");
-                                    //t.setNotificationType(NotificationType.ERROR);//t.setNotificationType(NotificationType.NOTICE);  //t.setNotificationType(NotificationType.WARNING);
-                                    t.setNotificationType(NotificationType.SUCCESS);
-                                    t.showAndDismiss(Duration.millis(4000));
-
-
-                                    try{
-                                        Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
-                                        Stage primaryStage = new Stage();
-                                        primaryStage.setTitle("Upload Photo And Signature..");
-                                        primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
-                                        Scene scene = new Scene(root, 600, 601); //"/image/login.png"
-                                        scene.getStylesheets().add("/Style/style.css");
-                                        primaryStage.resizableProperty().setValue(false);
-                                        primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-                                        primaryStage.setScene(scene);
-                                        primaryStage.show();
-                                    }catch (IOException e){
-                                        e.printStackTrace();
+                                    FXMLLoader Loader = new FXMLLoader();
+                                    Loader.setLocation(getClass().getResource("Photo&Signature.fxml"));
+                                    try {
+                                        Loader.load();
+                                    } catch (IOException e) {
+                                        Logger.getLogger(Controller.class.getName()).log(Level.SEVERE,null,e);
+                                    }finally {
+                                        Stage stage = (Stage) cancelButton.getScene().getWindow();
+                                        stage.close();
                                     }
+
+                                    PhotoSignatureController s = Loader.getController();
+                                    s.setAccountNumberTextField(accountNumber_text);
+
+                                    Parent p = Loader.getRoot();
+                                    Stage stage2 = new Stage();
+                                    stage2.getIcons().add(new Image("/image/3rd.jpg"));
+                                    stage2.setTitle("Upload Photo And Signature..");
+                                    stage2.resizableProperty().setValue(false);
+                                    stage2.initModality(Modality.APPLICATION_MODAL);
+                                    Scene scene = new Scene(p);
+                                    scene.getStylesheets().add("/Style/style.css");
+                                    stage2.setScene(scene);
+                                    stage2.showAndWait();
+
+
+                                    TrayNotification t = new TrayNotification();AnimationType a = AnimationType.POPUP;t.setAnimationType(a);t.setTitle("Success !!!");t.setMessage("Registration Success.");t.setNotificationType(NotificationType.SUCCESS);t.showAndDismiss(Duration.millis(4000));
+
+//
+//                                    try{
+//                                        Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
+//                                        Stage primaryStage = new Stage();
+//                                        primaryStage.setTitle("Upload Photo And Signature..");
+//                                        primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+//                                        Scene scene = new Scene(root, 600, 601); //"/image/login.png"
+//                                        scene.getStylesheets().add("/Style/style.css");
+//                                        primaryStage.resizableProperty().setValue(false);
+//                                        primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+//                                        primaryStage.setScene(scene);
+//                                        primaryStage.show();
+//                                    }catch (IOException e){
+//                                        e.printStackTrace();
+//                                    }
 
                                 }else {
                                     warning.setText("Try A Different AccountNumber or Email or Phone or NidPassportNo");

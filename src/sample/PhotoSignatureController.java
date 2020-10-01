@@ -80,7 +80,7 @@ public class PhotoSignatureController {
                     try{
                         Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
                         Stage primaryStage = new Stage();
-                        primaryStage.setTitle("Upload Photo And Signature..");
+                        primaryStage.setTitle("Welcome..");
                         primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
                         Scene scene = new Scene(root, 500, 500); //"/image/login.png"
                         scene.getStylesheets().add("/Style/style.css");
@@ -180,5 +180,9 @@ public class PhotoSignatureController {
             getSignPath=file.getAbsolutePath();
 
         }
+    }
+
+    public void setAccountNumberTextField(String accountNumber_text) {
+        this.accountNumber.setText(accountNumber_text);
     }
 }
