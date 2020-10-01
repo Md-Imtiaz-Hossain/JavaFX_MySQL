@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -41,30 +42,26 @@ public class CreateInternetBankingAccountController {
         Connection connection = createConnectionDemo.createConnection();
 
 
-        if (!accountNumber.getText().isEmpty() && !userName.getText().isEmpty()
-                && !confirmUserName.getText().isEmpty() && !password.getText().isEmpty()
-                && !confirmPassword.getText().isEmpty()){
-
+        if (!accountNumber.getText().isEmpty() && !userName.getText().isEmpty() && !confirmUserName.getText().isEmpty() && !password.getText().isEmpty() && !confirmPassword.getText().isEmpty()){
 
                     if (confirmUserName.getText().equals(userName.getText()) && password.getText().equals(confirmPassword.getText())){
                                 if (isExiecute()){
-                                    try{
-                                        Parent root = FXMLLoader.load(getClass().getResource("Photo&Signature.fxml"));
-                                        Stage primaryStage = new Stage();
-                                        primaryStage.setTitle("Upload Photo And Signature..");
-                                        Scene scene = new Scene(root, 600, 601); //"/image/login.png"
-                                        scene.getStylesheets().add("/Style/style.css");
-                                        primaryStage.resizableProperty().setValue(false);
-                                        primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-                                        primaryStage.setScene(scene);
-                                        primaryStage.show();
-                                    }catch (IOException e){
-                                        e.printStackTrace();
-                                    }finally {
-                                                //get a handle to the stage
-                                                Stage stage = (Stage) cancel.getScene().getWindow();
-                                                //do what you have to do
-                                                stage.close();
+
+
+                                    Parent root = FXMLLoader.load(getClass().getResource("welcome.fxml"));
+                                    Stage primaryStage = new Stage();
+                                    primaryStage.setTitle("Welcome..");
+                                    primaryStage.getIcons().add(new Image("/image/3rd.jpg"));
+                                    Scene scene = new Scene(root, 500, 500); //"/image/login.png"
+                                    scene.getStylesheets().add("/Style/style.css");
+                                    primaryStage.resizableProperty().setValue(false);
+                                    primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+                                    primaryStage.setScene(scene);
+                                    primaryStage.show();
+                                    System.out.println("Registration  Success...");
+
+                                    Stage stage = (Stage) submit.getScene().getWindow();
+                                    stage.close();
 
                                                 accountNumber.setText("");
                                                 userName.setText("");
@@ -72,18 +69,8 @@ public class CreateInternetBankingAccountController {
                                                 password.setText("");
                                                 confirmPassword.setText("");
 
+                                     System.out.println("Try A Different AccountNumber or Email or Phone or NidPassportNo");TrayNotification t = new TrayNotification();AnimationType a = AnimationType.POPUP;t.setAnimationType(a);t.setTitle("Success !!!");t.setMessage("Successfully Created Internet Banking Account.");t.setNotificationType(NotificationType.SUCCESS);t.showAndDismiss(Duration.millis(4000));
 
-                                        System.out.println("Try A Different AccountNumber or Email or Phone or NidPassportNo");
-                                        TrayNotification t = new TrayNotification();
-                                        //AnimationType a = AnimationType.FADE;//AnimationType a = AnimationType.SLIDE;
-                                        AnimationType a = AnimationType.POPUP;
-                                        t.setAnimationType(a);
-                                        t.setTitle("Success !!!");
-                                        t.setMessage("Successfully Created Internet Banking Account.");
-                                        //t.setNotificationType(NotificationType.ERROR);//t.setNotificationType(NotificationType.NOTICE);  //t.setNotificationType(NotificationType.WARNING);
-                                        t.setNotificationType(NotificationType.SUCCESS);
-                                        t.showAndDismiss(Duration.millis(4000));
-                                            }
 
                                 }else {
                                     warning.setText("Try a Different UserName...");
@@ -125,4 +112,7 @@ public class CreateInternetBankingAccountController {
         }
     }
 
+    public void setAccountNumberTextField(String accountNumber_text) {
+        this.accountNumber.setText(accountNumber_text);
+    }
 }

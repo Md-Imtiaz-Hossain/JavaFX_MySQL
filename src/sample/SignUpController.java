@@ -8,6 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -15,6 +16,8 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SignUpController  {
 
@@ -89,25 +92,58 @@ public class SignUpController  {
                 } else {
                             if (resultSet.getInt(1) == 1){
 
-                                        try{
-                                            Parent root = FXMLLoader.load(getClass().getResource("CreateInternetBankingAccount.fxml"));
-                                            Stage primaryStage = new Stage();
-                                            primaryStage.setTitle("Create A Bank Account");
-                                            Scene scene = new Scene(root, 338, 463); //"/image/login.png"
-                                            scene.getStylesheets().add("/Style/CreateBankAccount.css");
-                                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
-                                            primaryStage.resizableProperty().setValue(false); // Disable Mazimuise Button
-                                            primaryStage.setScene(scene);
+                                String accountNumber_text = accountNumber.getText();
 
-                                            primaryStage.show();
-                                        }catch (IOException e){
-                                            e.printStackTrace();
-                                        }finally {
-                                            //get a handle to the stage
-                                            Stage stage = (Stage) cancelButton.getScene().getWindow();
-                                            //do what you have to do
-                                            stage.close();
-                                        }
+                                FXMLLoader Loader = new FXMLLoader();
+                                Loader.setLocation(getClass().getResource("CreateInternetBankingAccount.fxml"));
+                                try {
+                                    Loader.load();
+                                } catch (IOException e) {
+                                    Logger.getLogger(Controller.class.getName()).log(Level.SEVERE,null,e);
+                                }finally {
+                                    Stage stage = (Stage) cancelButton.getScene().getWindow();
+                                    stage.close();
+                                }
+
+                                CreateInternetBankingAccountController s = Loader.getController();
+                                s.setAccountNumberTextField(accountNumber_text);
+
+                                Parent p = Loader.getRoot();
+                                Stage stage2 = new Stage();
+                                stage2.getIcons().add(new Image("/image/3rd.jpg"));
+                                stage2.setTitle("Create A Bank Account..");
+                                stage2.resizableProperty().setValue(false);
+                                stage2.initModality(Modality.APPLICATION_MODAL);
+                                Scene scene = new Scene(p);
+                                scene.getStylesheets().add("/Style/CreateBankAccount.css");
+                                stage2.setScene(scene);
+                                stage2.showAndWait();
+
+
+
+
+
+
+
+//                                        try{
+//                                            Parent root = FXMLLoader.load(getClass().getResource("CreateInternetBankingAccount.fxml"));
+//                                            Stage primaryStage = new Stage();
+//                                            primaryStage.setTitle("Create A Bank Account");
+//                                            Scene scene = new Scene(root, 338, 463); //"/image/login.png"
+//                                            scene.getStylesheets().add("/Style/CreateBankAccount.css");
+//                                            primaryStage.initModality(Modality.APPLICATION_MODAL); // Disable Others all Window
+//                                            primaryStage.resizableProperty().setValue(false); // Disable Mazimuise Button
+//                                            primaryStage.setScene(scene);
+//
+//                                            primaryStage.show();
+//                                        }catch (IOException e){
+//                                            e.printStackTrace();
+//                                        }finally {
+//                                            //get a handle to the stage
+//                                            Stage stage = (Stage) cancelButton.getScene().getWindow();
+//                                            //do what you have to do
+//                                            stage.close();
+//                                        }
                             }else {
                                 warning2.setText("");
                                 warning1.setText("");
