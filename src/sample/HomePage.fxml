@@ -136,8 +136,16 @@
             <AnchorPane prefHeight="55.0" prefWidth="800.0" style="-fx-background-color: #18181a;" BorderPane.alignment="CENTER">
                <children>
                   <Label layoutX="13.0" layoutY="12.0" prefHeight="17.0" prefWidth="275.0" text="16222|+8802556680123                              " textFill="#e8e4e4" />
-                  <Label layoutX="13.0" layoutY="31.0" prefHeight="17.0" prefWidth="775.0" text="SWIFT:BRAKBDDH ©COPYRIGHT 2018 ABC Bank Limited                                                                                             FAQ   Terms and Conditions  " textFill="#e8e4e4" />
-                  <Button fx:id="signUpForBankAccount" layoutX="583.0" layoutY="4.0" mnemonicParsing="false" onAction="#signUpForBankAccountOnAction" prefHeight="6.0" prefWidth="198.0" style="-fx-background-color: #18181a;" text="Create  Bank Account" textFill="#f2ecec" underline="true">
+                  <Label layoutX="13.0" layoutY="31.0" prefHeight="17.0" prefWidth="469.0" text="SWIFT:BRAKBDDH ©COPYRIGHT 2018 ABC Bank Limited  FAQ   Terms and Conditions  " textFill="#e8e4e4" />
+                  <Button fx:id="signUpForBankAccount" layoutX="583.0" layoutY="1.0" mnemonicParsing="false" onAction="#signUpForBankAccountOnAction" prefHeight="6.0" prefWidth="198.0" style="-fx-background-color: #18181a;" text="Create  Bank Account" textFill="#f2ecec" underline="true">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="deleteAnAccount" layoutX="575.0" layoutY="24.0" mnemonicParsing="false" onAction="#deleteAnAccountAccountOnAction" prefHeight="6.0" prefWidth="198.0" style="-fx-background-color: #18181a;" text="Delete an Account" textFill="#f2ecec" underline="true">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font>

@@ -221,4 +221,25 @@ public class HomePageController  {
         usernameTextField.setText("");
         passwordField.setText("");
     }
+
+    public void deleteAnAccountAccountOnAction(ActionEvent event) {
+
+        FXMLLoader Loader = new FXMLLoader();
+        Loader.setLocation(getClass().getResource("deleteAnAccount.fxml"));
+        try {
+            Loader.load();
+        } catch (IOException e) {
+            Logger.getLogger(SignUpController.class.getName()).log(Level.SEVERE,null,e);
+        }
+
+        Parent p = Loader.getRoot();
+        Stage stage2 = new Stage();
+        stage2.setTitle("Delete Contact");
+        stage2.resizableProperty().setValue(false);
+        stage2.initModality(Modality.APPLICATION_MODAL);
+        Scene scene = new Scene(p);
+        stage2.setScene(scene);
+        stage2.showAndWait();
+
+    }
 }
